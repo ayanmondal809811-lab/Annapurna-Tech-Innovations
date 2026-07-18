@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabuj Disha | Launching Soon</title>
+    <!-- Import Google Font for Premium UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --white: #FFFFFF;
+            --navy: #000080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #050505; /* Deep dark background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: var(--white);
+        }
+
+        /* --- Animated Glowing Background Orbs (Independence Theme) --- */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: float 15s infinite ease-in-out alternate;
+            z-index: 0;
+        }
+
+        .orb-1 { width: 400px; height: 400px; background: var(--saffron); top: -10%; left: -10%; }
+        .orb-2 { width: 350px; height: 350px; background: var(--green); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 300px; height: 300px; background: rgba(255, 255, 255, 0.3); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -10s; filter: blur(150px); }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(50px) scale(1.2); }
+        }
+
+        /* --- Glassmorphism UI Card --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Typography & Branding --- */
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d1d5db;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--saffron), #ffffff, var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* --- Premium Countdown Timer UI --- */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            width: 110px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .time-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255,255,255,0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .title { font-size: 2.5rem; }
+            .time-box { width: 80px; height: 90px; }
+            .number { font-size: 2rem; }
+            .label { font-size: 0.7rem; }
+            .glass-card { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Independence Theme Background -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- UI Container -->
+    <div class="glass-card">
+        <div class="badge">🇮🇳 15th August Launch</div>
+        <h1 class="title">Sabuj Disha</h1>
+        <p class="subtitle">Experience the future. A revolutionary app is blurring the lines of reality.</p>
+
+        <div class="timer-container">
+            <div class="time-box">
+                <span class="number" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="mins">00</span>
+                <span class="label">Mins</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="secs">00</span>
+                <span class="label">Secs</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Timer Logic -->
+    <script>
+        // Set launch date to 15th August (Year is dynamic based on next upcoming 15th Aug)
+        const now = new Date();
+        let launchYear = now.getFullYear();
+        if (now.getMonth() === 7 && now.getDate() > 15 || now.getMonth() > 7) {
+            launchYear += 1; 
+        }
+        const targetDate = new Date(`August 15, ${launchYear} 00:00:00`).getTime();
+
+        function updateTimer() {
+            const currentTime = new Date().getTime();
+            const difference = targetDate - currentTime;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Add zero padding (e.g., 09 instead of 9)
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("mins").innerText = mins.toString().padStart(2, '0');
+                document.getElementById("secs").innerText = secs.toString().padStart(2, '0');
+            } else {
+                // If the countdown is over
+                document.querySelector('.timer-container').innerHTML = "<h2 style='color: var(--green); font-size: 2rem;'>The App is Live Now!</h2>";
+            }
+        }
+
+        // Update timer every second
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call to avoid 1s delay
+    </script>
+</body>
+</html>
