@@ -6,7 +6,7 @@
     <title>Annapurna Tech Innovations</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,23 +14,19 @@
     <style>
         /* CSS VARIABLES & BASE STYLES */
         :root {
-            --primary: #1B4332;       /* Deep rich green */
-            --primary-light: #2D6A4F; /* Vibrant green */
-            --accent: #E9C46A;        /* Warm earth accent */
-            --accent-hover: #F4A261;
-            --bg-color: #F8F9FA;
+            --primary: #0F3820;       /* Ultra deep rich green */
+            --primary-light: #1A5936; /* Vibrant professional green */
+            --accent: #F4A261;        /* Warm earth accent */
+            --accent-hover: #E76F51;
+            --bg-color: #F4F7F5;
             --surface: #FFFFFF;
-            --text-dark: #212529;
-            --text-muted: #6C757D;
-            --text-light: #F8F9FA;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --text-dark: #111827;
+            --text-muted: #4B5563;
+            --text-light: #F9FAFB;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { scroll-behavior: smooth; }
 
@@ -42,279 +38,217 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; letter-spacing: -0.02em; }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; border: 2px solid var(--bg-color);}
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* NAVBAR (Glassmorphism) */
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* NAVBAR (Advanced Glassmorphism) */
         nav {
-            position: fixed; 
-            top: 0; left: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             padding: 1rem 5%;
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             transition: var(--transition);
         }
         
         .logo { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
+            font-weight: 800; 
             color: var(--primary);
-            display: flex; 
-            align-items: center; 
-            gap: 12px;
+            display: flex; align-items: center; gap: 12px;
             text-decoration: none;
         }
         
         .nav-logo {
-            width: 45px; height: 45px;
-            border-radius: 50%;
+            width: 45px; height: 45px; border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(26, 89, 54, 0.2);
         }
 
-        .nav-links { 
-            display: flex; 
-            gap: 2.5rem; 
-            list-style: none; 
-        }
-
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { 
-            color: var(--text-dark); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 1rem;
-            position: relative;
-            transition: var(--transition); 
+            color: var(--text-dark); text-decoration: none; 
+            font-weight: 600; font-size: 1rem;
+            position: relative; transition: var(--transition); 
         }
 
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -5px; left: 0;
+            content: ''; position: absolute;
+            width: 0; height: 3px; bottom: -6px; left: 0;
             background-color: var(--primary-light);
-            transition: var(--transition);
+            border-radius: 50px; transition: var(--transition);
         }
 
         .nav-links a:hover { color: var(--primary-light); }
         .nav-links a:hover::after { width: 100%; }
 
-        /* Mobile Menu Hamburger */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: var(--primary); }
 
         /* HERO SECTION */
         #hero {
-            height: 100vh; 
-            position: relative;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-align: center; 
-            color: var(--text-light); 
+            height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: var(--text-light); 
         }
 
         #hero-video-container {
-            position: absolute; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%;
-            z-index: 1; 
-            overflow: hidden; 
+            position: absolute; top: 0; left: 0; 
+            width: 100%; height: 100%; z-index: 1; overflow: hidden; 
         }
         
         #hero-video-container video {
-            width: 100%; height: 100%; 
-            object-fit: cover; 
+            width: 100%; height: 100%; object-fit: cover; 
+            transform: scale(1.05); /* Slight scale to hide edges */
         }
 
-        /* Gradient overlay to make text pop */
         .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(27, 67, 50, 0.85) 0%, rgba(0, 0, 0, 0.6) 100%);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(15, 56, 32, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 2;
         }
 
         .hero-content { 
-            position: relative; 
-            z-index: 3; 
-            max-width: 900px; 
-            padding: 0 20px;
-            animation: fadeIn 1.5s ease-out;
+            position: relative; z-index: 3; max-width: 1000px; padding: 0 20px;
+            animation: fadeInUP 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
         .hero-title { 
-            font-size: 4.5rem; 
-            font-weight: 800;
-            line-height: 1.1; 
-            margin-bottom: 25px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            /* Fluid typography: scales dynamically between 2.5rem and 5.5rem */
+            font-size: clamp(2.5rem, 6vw, 5.5rem); 
+            font-weight: 900; line-height: 1.1; margin-bottom: 25px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
+        
+        .hero-title span { color: var(--accent); }
 
         .hero-subtitle { 
-            font-size: 1.4rem; 
-            margin-bottom: 40px; 
-            font-weight: 300; 
-            opacity: 0.9;
+            font-size: clamp(1.1rem, 2vw, 1.4rem); 
+            margin-bottom: 40px; font-weight: 300; opacity: 0.9;
+            max-width: 700px; margin-inline: auto; line-height: 1.6;
         }
 
         .btn-primary {
-            background-color: var(--accent); 
-            color: var(--text-dark);
-            padding: 16px 40px; 
-            border-radius: 50px; 
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600; 
-            font-size: 1.1rem; 
-            transition: var(--transition);
-            display: inline-flex; 
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 20px rgba(233, 196, 106, 0.3);
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            color: var(--surface); padding: 18px 45px; border-radius: 50px; 
+            text-decoration: none; font-family: 'Poppins', sans-serif;
+            font-weight: 700; font-size: 1.1rem; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 15px 30px rgba(244, 162, 97, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .btn-primary:hover { 
-            background-color: var(--accent-hover); 
-            transform: translateY(-4px); 
-            box-shadow: 0 15px 25px rgba(233, 196, 106, 0.4);
+            transform: translateY(-5px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(231, 111, 81, 0.4);
         }
 
-        /* ABOUT SECTION */
-        section { padding: 100px 5%; }
-        
-        #about { 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            display: flex; 
-            gap: 60px; 
-            align-items: center; 
-            flex-wrap: wrap; 
+        /* Mouse Scroll Animation */
+        .scroll-indicator {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px;
+            opacity: 0.7; animation: bounce 2s infinite;
         }
+        .mouse {
+            width: 30px; height: 50px; border: 2px solid white; border-radius: 20px;
+            display: flex; justify-content: center; padding-top: 10px;
+        }
+        .wheel { width: 4px; height: 8px; background: white; border-radius: 2px; animation: scroll 1.5s infinite; }
 
-        .about-text { flex: 1; min-width: 320px; }
+        /* SECTION STYLES */
+        section { padding: 120px 5%; }
         
         .section-title { 
-            color: var(--primary); 
-            font-size: 2.8rem; 
-            font-weight: 700;
-            margin-bottom: 25px; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
+            color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); 
+            font-weight: 800; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; 
         }
         
         .section-title::before { 
-            content: ''; 
-            display: block; 
-            width: 60px; height: 4px; 
-            background-color: var(--accent); 
-            border-radius: 2px;
+            content: ''; display: block; width: 60px; height: 5px; 
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover)); 
+            border-radius: 50px;
         }
 
+        /* ABOUT SECTION */
+        #about { max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .about-text { flex: 1; min-width: 320px; }
+        
         .early-stage-tag {
             display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(45, 106, 79, 0.1); 
-            border: 1px solid rgba(45, 106, 79, 0.2);
-            padding: 12px 24px; 
-            border-radius: 50px; 
-            color: var(--primary-light); 
-            font-size: 0.95rem; 
-            font-weight: 600;
-            margin-bottom: 30px;
+            background: rgba(26, 89, 54, 0.08); border: 1px solid rgba(26, 89, 54, 0.15);
+            padding: 12px 24px; border-radius: 50px; color: var(--primary-light); 
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 30px;
         }
 
-        .about-p { 
-            font-size: 1.15rem; 
-            line-height: 1.8; 
-            color: var(--text-muted); 
-            margin-bottom: 15px; 
-        }
-        
-        .about-p:last-child {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-top: 20px;
-        }
+        .about-p { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 15px; }
+        .about-p:last-child { font-weight: 700; color: var(--primary); font-size: 1.4rem; margin-top: 20px; }
 
-        .about-media { 
-            flex: 1; 
-            min-width: 320px; 
-            position: relative;
-        }
-
+        .about-media { flex: 1; min-width: 320px; position: relative; }
         .about-video-wrapper { 
-            border-radius: 24px; 
-            overflow: hidden; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
-            position: relative;
+            border-radius: 30px; overflow: hidden; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15); 
+            position: relative; border: 8px solid white;
         }
-        
-        .about-video-wrapper video { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            border-radius: 24px;
-        }
+        .about-video-wrapper video { width: 100%; height: auto; display: block; }
 
         /* TEAM SECTION */
         #team { 
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            text-align: center; 
-            color: var(--text-light); 
+            text-align: center; color: var(--text-light); position: relative; overflow: hidden;
         }
 
+        /* Abstract glowing blobs for premium feel */
+        #team::before {
+            content: ''; position: absolute; top: -100px; left: -100px;
+            width: 400px; height: 400px; background: rgba(244, 162, 97, 0.15);
+            filter: blur(100px); border-radius: 50%; z-index: 0;
+        }
+
+        #team .team-header, #team .team-grid { position: relative; z-index: 1; }
         #team .section-title { color: var(--surface); justify-content: center; }
         #team .section-title::before { display: none; }
         #team .section-title::after {
-            content: ''; 
-            display: block; 
-            width: 60px; height: 4px; 
-            background-color: var(--accent); 
-            border-radius: 2px;
-            position: absolute;
-            bottom: -10px;
+            content: ''; display: block; width: 60px; height: 5px; 
+            background: var(--accent); border-radius: 50px;
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
         }
         
-        .team-header { position: relative; display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 60px;}
-        .team-subtitle { color: var(--accent); font-size: 1.2rem; margin-top: 20px;}
+        .team-header { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 70px;}
+        .team-subtitle { color: var(--accent); font-size: 1.2rem; margin-top: 30px; font-weight: 500;}
 
         .team-grid { 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 40px; 
+            max-width: 1300px; margin: 0 auto; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; 
         }
 
-        .flip-card { 
-            background-color: transparent; 
-            height: 420px; 
-            perspective: 1000px; 
-            cursor: pointer; 
-        }
-
+        .flip-card { background-color: transparent; height: 440px; perspective: 1000px; cursor: pointer; }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            transform-style: preserve-3d; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transform-style: preserve-3d; border-radius: 30px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
@@ -322,141 +256,115 @@
         .flip-card-front, .flip-card-back {
             position: absolute; width: 100%; height: 100%;
             -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 24px; overflow: hidden;
+            border-radius: 30px; overflow: hidden;
         }
 
         .flip-card-front { background-color: var(--surface); }
         .flip-card-front img { width: 100%; height: 100%; object-fit: cover; }
         
         .front-content { 
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            padding: 30px 20px; 
-            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5), transparent); 
-            color: var(--text-light); 
-            text-align: left; 
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 25px 30px; 
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6), transparent); 
+            color: var(--text-light); text-align: left; 
         }
         
-        .front-content h3 { font-size: 1.6rem; margin-bottom: 5px; }
-        .front-content p { color: var(--accent); font-weight: 600; font-size: 1rem;}
+        .front-content h3 { font-size: 1.6rem; margin-bottom: 5px; font-weight: 700;}
+        .front-content p { color: var(--accent); font-weight: 600; font-size: 1.05rem;}
 
         .flip-card-back {
-            background-color: var(--surface); 
-            color: var(--text-dark); 
-            transform: rotateY(180deg); 
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; 
-            padding: 40px 30px;
-            border: 2px solid var(--accent);
+            background-color: var(--surface); color: var(--text-dark); 
+            transform: rotateY(180deg); display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; padding: 40px 30px;
+            border: 3px solid rgba(244, 162, 97, 0.3);
         }
 
-        .flip-card-back i { font-size: 2.5rem; color: var(--primary-light); margin-bottom: 20px; }
-        .flip-card-back h3 { font-size: 1.5rem; color: var(--primary); }
+        .flip-card-back i.role-icon { font-size: 3rem; color: var(--primary-light); margin-bottom: 20px; }
+        .flip-card-back h3 { font-size: 1.6rem; color: var(--primary); font-weight: 800;}
         .flip-card-back p { font-size: 1rem; line-height: 1.7; color: var(--text-muted); margin-top: 15px; }
+
+        /* PRO LINKEDIN BUTTON */
+        .linkedin-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #0A66C2; color: white; padding: 12px 24px;
+            border-radius: 50px; text-decoration: none; font-weight: 600;
+            margin-top: 25px; font-size: 0.9rem; font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(10, 102, 194, 0.2);
+        }
+        .linkedin-btn:hover {
+            background: #004182; transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(10, 102, 194, 0.4); color: white;
+        }
 
         /* PRODUCTS SECTION */
         #products { max-width: 1300px; margin: 0 auto; }
-        .products-header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center;}
+        .products-header { text-align: center; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center;}
         
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 40px; 
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
         
         .product-card { 
-            background: var(--surface); 
-            border-radius: 24px; 
-            overflow: hidden; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
-            transition: var(--transition); 
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.05);
+            background: var(--surface); border-radius: 30px; overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04); transition: var(--transition); 
+            display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.03);
         }
         
-        .product-card:hover { 
-            transform: translateY(-12px); 
-            box-shadow: 0 25px 45px rgba(0,0,0,0.1);
-        }
+        .product-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
 
-        .product-img-wrapper { position: relative; height: 260px; overflow: hidden; }
-        .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
+        .product-img-wrapper { position: relative; height: 280px; overflow: hidden; }
+        .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .product-card:hover .product-img-wrapper img { transform: scale(1.1); }
         
         .status-tag { 
-            position: absolute; top: 20px; right: 20px; 
-            background: rgba(255,255,255,0.9); 
-            backdrop-filter: blur(5px);
-            color: var(--primary); 
-            padding: 8px 18px; 
-            border-radius: 50px; 
-            font-size: 0.85rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 2;
+            position: absolute; top: 25px; right: 25px; 
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            color: var(--primary); padding: 8px 20px; border-radius: 50px; 
+            font-size: 0.85rem; font-weight: 800; text-transform: uppercase; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 2; letter-spacing: 1px;
         }
 
-        .product-info { padding: 40px 30px; flex-grow: 1; display: flex; flex-direction: column;}
-        .product-info h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); }
-        .product-info p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem;}
-        .date-tag { color: var(--accent-hover); font-weight: 700; margin-bottom: 10px; display: block; font-size: 0.95rem;}
+        .product-info { padding: 40px; flex-grow: 1; display: flex; flex-direction: column;}
+        .product-info h3 { font-size: 2rem; margin-bottom: 15px; color: var(--primary); font-weight: 800;}
+        .product-info p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;}
+        .date-tag { color: var(--accent-hover); font-weight: 700; margin-bottom: 15px; display: block; font-size: 1rem;}
 
         /* FOOTER */
         footer { 
-            background: #111; 
-            color: #888; 
-            text-align: center; 
-            padding: 40px 20px; 
-            font-size: 0.95rem;
+            background: #0B130D; color: #6B7280; text-align: center; 
+            padding: 50px 20px; font-size: 1rem; border-top: 1px solid #1F2937;
         }
-        footer span { color: var(--accent); font-weight: 600; }
+        footer span { color: var(--accent); font-weight: 700; }
 
         /* KEYFRAMES */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUP { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
+        @keyframes scroll { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(15px); opacity: 0; } }
 
-        /* RESPONSIVE DESIGN (MOBILE & TABLET) */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 991px) {
-            .hero-title { font-size: 3.5rem; }
-            .section-title { font-size: 2.2rem; }
             #about { gap: 40px; }
+            section { padding: 100px 5%; }
         }
 
         @media (max-width: 768px) {
-            /* Navbar Mobile */
             .hamburger { display: block; }
             
             .nav-links {
-                position: absolute;
-                top: 100%; left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 2rem;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                position: absolute; top: 100%; left: 0; width: 100%;
+                background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px);
+                flex-direction: column; align-items: center; padding: 2rem 0; gap: 2rem;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                transition: clip-path 0.4s ease-in-out;
+                transition: clip-path 0.5s cubic-bezier(0.8, 0, 0.2, 1);
             }
             
-            .nav-links.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 
-            .hero-title { font-size: 2.8rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            section { padding: 70px 5%; }
-            
+            section { padding: 80px 5%; }
             #about { flex-direction: column; }
             .about-media { width: 100%; }
             
             .products-grid { grid-template-columns: 1fr; }
-            .flip-card { height: 380px; }
+            .flip-card { height: 400px; }
+            .scroll-indicator { display: none; } /* Hide mouse on mobile */
         }
     </style>
 </head>
@@ -465,8 +373,8 @@
     <!-- NAVIGATION -->
     <nav>
         <a href="#" class="logo">
-            <img src="logo.png" alt="Logo" class="nav-logo" onerror="this.src='https://via.placeholder.com/45/1B4332/FFFFFF?text=AT'">
-            Annapurna Tech
+            <img src="logo.png" alt="Logo" class="nav-logo" onerror="this.src='https://via.placeholder.com/45/0F3820/FFFFFF?text=AT'">
+            Annapurna Tech Innovations
         </a>
         <ul class="nav-links">
             <li><a href="#about" onclick="closeMenu()">About</a></li>
@@ -474,7 +382,7 @@
             <li><a href="#products" onclick="closeMenu()">Innovations</a></li>
         </ul>
         <div class="hamburger" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars-staggered"></i>
         </div>
     </nav>
 
@@ -485,20 +393,26 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Empowering Indian Farmers with Smart Technology</h1>
-            <p class="hero-subtitle">An emerging AgriTech initiative blending nature with intelligent innovation.</p>
+            <h1 class="hero-title">Empowering Indian Farmers with <span>Smart Technology</span></h1>
+            <p class="hero-subtitle">An emerging AgriTech initiative blending nature with intelligent innovation to secure the future of farming.</p>
             <a href="#products" class="btn-primary">
                 Explore Our Work <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
+        
+        <!-- Animated Mouse Scroll -->
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;">SCROLL</span>
+        </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about">
+    <section id="about" class="reveal">
         <div class="about-text">
             <h2 class="section-title">Our Vision & Story</h2>
             <div class="early-stage-tag">
-                <i class="fa-solid fa-seedling"></i> Turning soil data into smart harvests — one farmer at a time.
+                <i class="fa-solid fa-seedling"></i> Turning soil data into smart harvests
             </div>
             <p class="about-p">Soil, sky, and market price — now speak as one voice clear,</p>
             <p class="about-p">Every question a farmer carries finds its answer near.</p>
@@ -507,52 +421,52 @@
             <p class="about-p">The name of this revolution — Annapurna Tech.</p>
         </div>
         
-        <div class="about-media">
+        <div class="about-media reveal delay-1">
             <div class="about-video-wrapper">
-                <video src="video1.mp4" autoplay loop muted playsinline poster="https://via.placeholder.com/800x600/1B4332/FFFFFF?text=Annapurna+Tech+Video"></video>
+                <video src="https://res.cloudinary.com/e01zz1ge/video/upload/video1_rt2goo.mp4" autoplay loop muted playsinline poster="https://via.placeholder.com/800x600/0F3820/FFFFFF?text=Annapurna+Tech+Video"></video>
             </div>
         </div>
     </section>
 
     <!-- TEAM SECTION -->
     <section id="team">
-        <div class="team-header">
+        <div class="team-header reveal">
             <h2 class="section-title">Meet The Team</h2>
-            <p class="team-subtitle">The minds behind Annapurna Tech Innovations</p>
+            <p class="team-subtitle">The brilliant minds behind Annapurna Tech Innovations</p>
         </div>
         <div class="team-grid" id="pub-team-grid">
-            <!-- Injected via JS -->
+            <!-- Cards Injected via JS with scroll animations -->
         </div>
     </section>
 
     <!-- PRODUCTS SECTION -->
     <section id="products">
-        <div class="products-header">
+        <div class="products-header reveal">
             <h2 class="section-title">Our Innovations</h2>
-            <p style="color: var(--text-muted); margin-top:10px; font-size: 1.1rem;">Technology solutions for modern agriculture</p>
+            <p style="color: var(--text-muted); margin-top:10px; font-size: 1.15rem;">Advanced technology solutions for modern agriculture</p>
         </div>
         <div class="products-grid">
             
             <!-- Product 1 -->
-            <div class="product-card">
+            <div class="product-card reveal delay-1">
                 <div class="product-img-wrapper">
                     <span class="status-tag" style="color: var(--primary-light);">LIVE</span>
                     <a href="https://pixel-perfect-clone-65785.lovable.app" target="_blank"> 
-                        <img src="agro.png" alt="Agro Survey" onerror="this.src='https://via.placeholder.com/600x400/E9C46A/1B4332?text=Agro+Survey'">
+                        <img src="agro.png" alt="Agro Survey" onerror="this.src='https://via.placeholder.com/600x400/F4A261/0F3820?text=Agro+Survey'">
                     </a>
                 </div>
                 <div class="product-info">
                     <h3>Agro Survey</h3>
-                    <p>Your valuable insights and experiences help us build better, technology-driven solutions for the farming community. Join us in shaping the future of smart agriculture. Your feedback is crucial to the mission of Annapurna Tech Innovations.</p>
+                    <p>Your valuable insights and experiences help us build better, technology-driven solutions for the farming community. Join us in shaping the future of smart agriculture. Your feedback is crucial to our mission.</p>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product-card">
+            <div class="product-card reveal delay-2">
                 <div class="product-img-wrapper">
                     <span class="status-tag" style="color: #d97706;">In Development</span>
                     <a href="TIMER.html">
-                        <img src="sabujdisha.png" alt="Sabuj Disha" onerror="this.src='https://via.placeholder.com/600x400/2D6A4F/FFFFFF?text=Sabuj+Disha'">
+                        <img src="sabujdisha.png" alt="Sabuj Disha" onerror="this.src='https://via.placeholder.com/600x400/1A5936/FFFFFF?text=Sabuj+Disha'">
                     </a> 
                 </div>
                 <div class="product-info">
@@ -572,53 +486,60 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Data Configuration
+        // Data Configuration - ADD YOUR LINKEDIN LINKS HERE
         const teamData = [
             { 
                 name: "Subhasish Pradhan", 
                 role: "Team Member", 
                 contribution: "Ideation & Research Lead. Spearheaded the initial concept and drove the comprehensive agricultural research.", 
                 image: "subhasis.png", 
-                icon: "fa-lightbulb" 
+                icon: "fa-lightbulb",
+                linkedin: "https://www.linkedin.com/in/subho-pradhan-3aa9063a1?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
             },
             { 
                 name: "Ayan Mondal", 
                 role: "Team Member", 
                 contribution: "Ideation & Core Technology. Worked alongside Subhasish on ideation and oversaw the complete technical architecture and development.", 
                 image: "Ayan.png", 
-                icon: "fa-laptop-code" 
+                icon: "fa-laptop-code",
+                linkedin: "https://www.linkedin.com/in/ayan-mondal-15165035a?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
             },
             { 
                 name: "Debsumi Sengupta", 
                 role: "Team Member", 
                 contribution: "Presentation & Design Lead. Responsible for visual storytelling and project presentations.", 
                 image: "Debsumi.jpeg", 
-                icon: "fa-pen-nib" 
+                icon: "fa-pen-nib",
+                linkedin: "https://www.linkedin.com/in/debsumi-sengupta-6656b6414?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
             },
             { 
                 name: "Debroshree Ghosh", 
                 role: "Mentor", 
                 contribution: "Guiding the team with industry insights, strategic direction, and invaluable mentorship throughout the project.", 
                 image: "dgmam.png", 
-                icon: "fa-chalkboard-user" 
+                icon: "fa-chalkboard-user",
+                linkedin: "https://www.linkedin.com/in/debosree-ghosh-ab528a54?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
             }
         ];
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
             renderTeam();
+            initScrollAnimations();
         });
 
-        // Render Team Grid
+        // Render Team Grid with LinkedIn Buttons
         function renderTeam() {
             const teamContainer = document.getElementById('pub-team-grid');
             
-            teamData.forEach(member => {
-                // Fallback image handling
-                const imgTag = `<img src="${member.image}" alt="${member.name}" onerror="this.src='https://via.placeholder.com/400x500/2D6A4F/FFFFFF?text=${member.name.split(' ')[0]}'">`;
+            teamData.forEach((member, index) => {
+                // Calculate delay for staggered scroll animation
+                const delayClass = `delay-${(index % 4) + 1}`;
+                
+                const imgTag = `<img src="${member.image}" alt="${member.name}" onerror="this.src='https://via.placeholder.com/400x500/1A5936/FFFFFF?text=${member.name.split(' ')[0]}'">`;
                 
                 teamContainer.innerHTML += `
-                    <div class="flip-card">
+                    <div class="flip-card reveal ${delayClass}">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 ${imgTag}
@@ -628,16 +549,46 @@
                                 </div>
                             </div>
                             <div class="flip-card-back">
-                                <i class="fa-solid ${member.icon}"></i>
+                                <i class="fa-solid ${member.icon} role-icon"></i>
                                 <h3>${member.name}</h3>
-                                <div style="width: 50px; height: 3px; background: var(--accent); margin: 15px 0; border-radius: 2px;"></div>
+                                <div style="width: 50px; height: 4px; background: var(--accent); margin: 15px 0; border-radius: 50px;"></div>
                                 <p>${member.contribution}</p>
+                                
+                                <!-- LinkedIn Button -->
+                                <a href="${member.linkedin}" target="_blank" class="linkedin-btn">
+                                    <i class="fa-brands fa-linkedin-in" style="font-size: 1.1rem; color: white; margin:0;"></i> Connect
+                                </a>
                             </div>
                         </div>
                     </div>`;
             });
         }
         
+        // Scroll Intersection Observer for smooth animations
+        function initScrollAnimations() {
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+        }
+
         // Mobile Menu Toggle
         const navLinks = document.querySelector('.nav-links');
         const hamburgerIcon = document.querySelector('.hamburger i');
@@ -645,20 +596,19 @@
         function toggleMenu() {
             navLinks.classList.toggle('active');
             if (navLinks.classList.contains('active')) {
-                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.remove('fa-bars-staggered');
                 hamburgerIcon.classList.add('fa-xmark');
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.add('fa-bars-staggered');
             }
         }
 
-        // Close menu when clicking a link (mobile)
         function closeMenu() {
             if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
                 hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.add('fa-bars-staggered');
             }
         }
     </script>
