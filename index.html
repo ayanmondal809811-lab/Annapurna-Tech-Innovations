@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Annapurna Tech Innovations</title>
@@ -15,9 +14,9 @@
     <style>
         /* CSS VARIABLES & BASE STYLES */
         :root {
-            --primary: #0F3820;       /* Ultra deep rich green */
-            --primary-light: #1A5936; /* Vibrant professional green */
-            --accent: #F4A261;        /* Warm earth accent */
+            --primary: #0F3820;       
+            --primary-light: #1A5936; 
+            --accent: #F4A261;        
             --accent-hover: #E76F51;
             --bg-color: #F4F7F5;
             --surface: #FFFFFF;
@@ -62,7 +61,7 @@
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
 
-        /* NAVBAR (Advanced Glassmorphism) */
+        /* NAVBAR */
         nav {
             position: fixed; top: 0; left: 0; width: 100%;
             background: rgba(255, 255, 255, 0.75); 
@@ -122,7 +121,7 @@
         
         #hero-video-container video {
             width: 100%; height: 100%; object-fit: cover; 
-            transform: scale(1.05); /* Slight scale to hide edges */
+            transform: scale(1.05);
         }
 
         .hero-overlay {
@@ -137,7 +136,6 @@
         }
 
         .hero-title { 
-            /* Fluid typography: scales dynamically between 2.5rem and 5.5rem */
             font-size: clamp(2.5rem, 6vw, 5.5rem); 
             font-weight: 900; line-height: 1.1; margin-bottom: 25px;
             text-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -166,7 +164,6 @@
             box-shadow: 0 20px 40px rgba(231, 111, 81, 0.4);
         }
 
-        /* Mouse Scroll Animation */
         .scroll-indicator {
             position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
             z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -178,7 +175,6 @@
         }
         .wheel { width: 4px; height: 8px; background: white; border-radius: 2px; animation: scroll 1.5s infinite; }
 
-        /* SECTION STYLES */
         section { padding: 120px 5%; }
         
         .section-title { 
@@ -220,14 +216,13 @@
             text-align: center; color: var(--text-light); position: relative; overflow: hidden;
         }
 
-        /* Abstract glowing blobs for premium feel */
         #team::before {
             content: ''; position: absolute; top: -100px; left: -100px;
             width: 400px; height: 400px; background: rgba(244, 162, 97, 0.15);
             filter: blur(100px); border-radius: 50%; z-index: 0;
         }
 
-        #team .team-header, #team .team-grid { position: relative; z-index: 1; }
+        #team .team-header, #team .team-grid, #team .leadership-grid { position: relative; z-index: 1; }
         #team .section-title { color: var(--surface); justify-content: center; }
         #team .section-title::before { display: none; }
         #team .section-title::after {
@@ -236,9 +231,82 @@
             position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
         }
         
-        .team-header { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 70px;}
+        .team-header { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 50px;}
         .team-subtitle { color: var(--accent); font-size: 1.2rem; margin-top: 30px; font-weight: 500;}
 
+        /* LEADERSHIP / DIRECTORS GRID (NEW BEAUTIFUL CIRCULAR DESIGN) */
+        .leadership-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 70px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .leadership-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 30px;
+            text-align: center;
+            width: 320px;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border-color: rgba(244, 162, 97, 0.3);
+        }
+
+        .leadership-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Bhalo kore gol kore */
+            object-fit: cover;
+            margin: 0 auto 25px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+            padding: 5px;
+            background: rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        
+        .leadership-card:hover .leadership-img {
+            transform: scale(1.05);
+            border-color: var(--surface);
+        }
+
+        .leadership-card h3 {
+            color: var(--surface);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .leadership-card p {
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+        
+        .team-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            margin: 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* MAIN TEAM GRID */
         .team-grid { 
             max-width: 1300px; margin: 0 auto; 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; 
@@ -283,7 +351,6 @@
         .flip-card-back h3 { font-size: 1.6rem; color: var(--primary); font-weight: 800;}
         .flip-card-back p { font-size: 1rem; line-height: 1.7; color: var(--text-muted); margin-top: 15px; }
 
-        /* PRO LINKEDIN BUTTON */
         .linkedin-btn {
             display: inline-flex; align-items: center; gap: 8px;
             background: #0A66C2; color: white; padding: 12px 24px;
@@ -365,10 +432,9 @@
             
             .products-grid { grid-template-columns: 1fr; }
             .flip-card { height: 400px; }
-            .scroll-indicator { display: none; } /* Hide mouse on mobile */
+            .scroll-indicator { display: none; }
         }
     </style>
-    <meta name="google-site-verification" content="LZOXgVBUQYlrrtCwppfk8MtrRQOnlB7Tmd5O0mklg-w" />
 </head>
 <body>
 
@@ -402,7 +468,6 @@
             </a>
         </div>
         
-        <!-- Animated Mouse Scroll -->
         <div class="scroll-indicator">
             <div class="mouse"><div class="wheel"></div></div>
             <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;">SCROLL</span>
@@ -436,6 +501,23 @@
             <h2 class="section-title">Meet The Team</h2>
             <p class="team-subtitle">The brilliant minds behind Annapurna Tech Innovations</p>
         </div>
+
+        <!-- NEW: LEADERSHIP SECTION (Added before the team grid) -->
+        <h3 class="reveal" style="color: var(--surface); font-size: 1.8rem; margin-bottom: 30px; font-weight: 600; text-align: center;">Special Thanks</h3>
+      <p style="font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.95); font-style: italic; letter-spacing: 0.3px; text-align: center; font-weight: 300;">
+    This project would not have been possible without the invaluable support and guidance of our respected Director Sir and Principal Sir. We sincerely thank them for their constant encouragement, valuable guidance, and for providing the resources and support that made this project possible. Their trust and inspiration have been our greatest strength throughout this journey.
+</p>
+        <br>
+        <div class="leadership-grid" id="pub-leadership-grid">
+            <!-- Leadership Cards Injected via JS -->
+        </div>
+
+        <!-- Divider Line -->
+        <div class="team-divider reveal"></div>
+
+        <!-- MAIN TEAM GRID -->
+        <h3 class="reveal" style="color: var(--surface); font-size: 1.8rem; margin-bottom: 40px; font-weight: 600; text-align: center;">Core Team Members</h3>
+        
         <div class="team-grid" id="pub-team-grid">
             <!-- Cards Injected via JS with scroll animations -->
         </div>
@@ -449,7 +531,6 @@
         </div>
         <div class="products-grid">
             
-            <!-- Product 1 -->
             <div class="product-card reveal delay-1">
                 <div class="product-img-wrapper">
                     <span class="status-tag" style="color: var(--primary-light);">LIVE</span>
@@ -463,7 +544,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card reveal delay-2">
                 <div class="product-img-wrapper">
                     <span class="status-tag" style="color: #d97706;">In Development</span>
@@ -473,7 +553,7 @@
                 </div>
                 <div class="product-info">
                     <h3>Sabuj Disha</h3>
-                    <span class="date-tag"><i class="fa-regular fa-calendar-check"></i> Coming Soon – 15th August</span>
+                    <span class="date-tag"><i class="fa-regular fa-calendar-check"></i> Coming Soon – 1st August</span>
                     <p>A new beginning for farmers with exciting opportunities, powerful features, and a smarter way to grow. Stay tuned... The future of agriculture is almost here.</p>
                 </div>
             </div>
@@ -488,15 +568,29 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Data Configuration - ADD YOUR LINKEDIN LINKS HERE
+        // Data Configuration - LEADERSHIP
+        const leadershipData = [
+            { 
+                name: "Dr. Nandan Gupta", 
+                role: "Director", 
+                image: "Director_sir.png" // <-- Replace with Director Sir's actual photo file name
+            },
+            { 
+                name: "Professor Kishore Ghosh", 
+                role: "Principal", 
+                image: "Principal_sir.png" // <-- Replace with Principal Sir's actual photo file name
+            }
+        ];
+
+        // Data Configuration - CORE TEAM
         const teamData = [
             { 
-                name: "Subhasis Pradhan", 
+                name: "Subhasish Pradhan", 
                 role: "Team Member", 
                 contribution: "Ideation & Research Lead. Spearheaded the initial concept and drove the comprehensive agricultural research.", 
                 image: "subhasis.png", 
                 icon: "fa-lightbulb",
-                linkedin: "https://www.linkedin.com/in/subho-pradhan-3aa9063a1?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
+                linkedin: "https://www.linkedin.com/in/subho-pradhan-3aa9063a1?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             },
             { 
                 name: "Ayan Mondal", 
@@ -504,7 +598,7 @@
                 contribution: "Ideation & Core Technology. Worked alongside Subhasish on ideation and oversaw the complete technical architecture and development.", 
                 image: "Ayan.png", 
                 icon: "fa-laptop-code",
-                linkedin: "https://www.linkedin.com/in/ayan-mondal-15165035a?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
+                linkedin: "https://www.linkedin.com/in/ayan-mondal-15165035a?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             },
             { 
                 name: "Debsumi Sengupta", 
@@ -512,7 +606,7 @@
                 contribution: "Presentation & Design Lead. Responsible for visual storytelling and project presentations.", 
                 image: "Debsumi.jpeg", 
                 icon: "fa-pen-nib",
-                linkedin: "https://www.linkedin.com/in/debsumi-sengupta-6656b6414?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
+                linkedin: "https://www.linkedin.com/in/debsumi-sengupta-6656b6414?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             },
             { 
                 name: "Debroshree Ghosh", 
@@ -520,24 +614,40 @@
                 contribution: "Guiding the team with industry insights, strategic direction, and invaluable mentorship throughout the project.", 
                 image: "dgmam.png", 
                 icon: "fa-chalkboard-user",
-                linkedin: "https://www.linkedin.com/in/debosree-ghosh-ab528a54?utm_source=share_via&utm_content=profile&utm_medium=member_android" // <-- Replace with actual link
+                linkedin: "https://www.linkedin.com/in/debosree-ghosh-ab528a54?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             }
         ];
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
+            renderLeadership();
             renderTeam();
             initScrollAnimations();
         });
 
-        // Render Team Grid with LinkedIn Buttons
+        // Render Leadership (NEW)
+        function renderLeadership() {
+            const leadershipContainer = document.getElementById('pub-leadership-grid');
+            
+            leadershipData.forEach((leader, index) => {
+                const delayClass = `delay-${index + 1}`;
+                const imgTag = `<img src="${leader.image}" alt="${leader.name}" class="leadership-img" onerror="this.src='https://via.placeholder.com/200x200/F4A261/0F3820?text=${leader.name.split(' ')[0]}'">`;
+                
+                leadershipContainer.innerHTML += `
+                    <div class="leadership-card reveal ${delayClass}">
+                        ${imgTag}
+                        <h3>${leader.name}</h3>
+                        <p>${leader.role}</p>
+                    </div>`;
+            });
+        }
+
+        // Render Team Grid 
         function renderTeam() {
             const teamContainer = document.getElementById('pub-team-grid');
             
             teamData.forEach((member, index) => {
-                // Calculate delay for staggered scroll animation
                 const delayClass = `delay-${(index % 4) + 1}`;
-                
                 const imgTag = `<img src="${member.image}" alt="${member.name}" onerror="this.src='https://via.placeholder.com/400x500/1A5936/FFFFFF?text=${member.name.split(' ')[0]}'">`;
                 
                 teamContainer.innerHTML += `
@@ -556,7 +666,6 @@
                                 <div style="width: 50px; height: 4px; background: var(--accent); margin: 15px 0; border-radius: 50px;"></div>
                                 <p>${member.contribution}</p>
                                 
-                                <!-- LinkedIn Button -->
                                 <a href="${member.linkedin}" target="_blank" class="linkedin-btn">
                                     <i class="fa-brands fa-linkedin-in" style="font-size: 1.1rem; color: white; margin:0;"></i> Connect
                                 </a>
@@ -566,7 +675,7 @@
             });
         }
         
-        // Scroll Intersection Observer for smooth animations
+        // Scroll Intersection Observer
         function initScrollAnimations() {
             const revealElements = document.querySelectorAll('.reveal');
             
@@ -581,7 +690,7 @@
                         return;
                     } else {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Stop observing once revealed
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, revealOptions);
