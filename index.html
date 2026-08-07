@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Annapurna Tech Innovations</title>
     
+    <!-- Title Bar Logo (Favicon) -->
+    <link rel="icon" type="image/png" href="logo1.png">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
@@ -82,10 +85,14 @@
             text-decoration: none;
         }
         
+        /* LOGO SIZE INCREASED HERE */
         .nav-logo {
-            width: 45px; height: 45px; border-radius: 50%;
+            width: 70px;  /* Age 45px chilo, boro kora holo */
+            height: 70px; /* Age 45px chilo, boro kora holo */
+            border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 4px 15px rgba(26, 89, 54, 0.2);
+            transition: var(--transition);
         }
 
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -234,7 +241,7 @@
         .team-header { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 50px;}
         .team-subtitle { color: var(--accent); font-size: 1.2rem; margin-top: 30px; font-weight: 500;}
 
-        /* LEADERSHIP / DIRECTORS GRID (NEW BEAUTIFUL CIRCULAR DESIGN) */
+        /* LEADERSHIP / DIRECTORS GRID */
         .leadership-grid {
             display: flex;
             justify-content: center;
@@ -267,7 +274,7 @@
         .leadership-img {
             width: 160px;
             height: 160px;
-            border-radius: 50%; /* Bhalo kore gol kore */
+            border-radius: 50%; 
             object-fit: cover;
             margin: 0 auto 25px;
             border: 4px solid var(--accent);
@@ -441,7 +448,7 @@
     <!-- NAVIGATION -->
     <nav>
         <a href="#" class="logo">
-            <img src="logo.png" alt="Logo" class="nav-logo" onerror="this.src='https://via.placeholder.com/45/0F3820/FFFFFF?text=AT'">
+            <img src="logo.png" alt="Logo" class="nav-logo" onerror="this.src='https://via.placeholder.com/70/0F3820/FFFFFF?text=AT'">
             Annapurna Tech Innovations
         </a>
         <ul class="nav-links">
@@ -553,7 +560,7 @@
                 </div>
                 <div class="product-info">
                     <h3>Sabuj Disha</h3>
-                    <span class="date-tag"><i class="fa-regular fa-calendar-check"></i> Coming Soon – 15th August</span>
+                    <span class="date-tag"><i class="fa-regular fa-calendar-check"></i> Coming Soon – 1st August</span>
                     <p>A new beginning for farmers with exciting opportunities, powerful features, and a smarter way to grow. Stay tuned... The future of agriculture is almost here.</p>
                 </div>
             </div>
@@ -585,7 +592,7 @@
         // Data Configuration - CORE TEAM
         const teamData = [
             { 
-                name: "Subhasis Pradhan", 
+                name: "Subhasish Pradhan", 
                 role: "Team Member", 
                 contribution: "Ideation & Research Lead. Spearheaded the initial concept and drove the comprehensive agricultural research.", 
                 image: "subhasis.png", 
@@ -595,7 +602,7 @@
             { 
                 name: "Ayan Mondal", 
                 role: "Team Member", 
-                contribution: "Ideation & Core Technology. Worked alongside Subhasis on ideation and oversaw the complete technical architecture and development.", 
+                contribution: "Ideation & Core Technology. Worked alongside Subhasish on ideation and oversaw the complete technical architecture and development.", 
                 image: "Ayan.png", 
                 icon: "fa-laptop-code",
                 linkedin: "https://www.linkedin.com/in/ayan-mondal-15165035a?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
@@ -609,7 +616,7 @@
                 linkedin: "https://www.linkedin.com/in/debsumi-sengupta-6656b6414?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             },
             { 
-                name: "Debosree Ghosh", 
+                name: "Debroshree Ghosh", 
                 role: "Mentor", 
                 contribution: "Guiding the team with industry insights, strategic direction, and invaluable mentorship throughout the project.", 
                 image: "dgmam.png", 
