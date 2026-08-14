@@ -67,6 +67,15 @@
             color: var(--saffron);
         }
 
+        /* Keep Director/Principal names and "Meet Our Team" headings
+           bright white when the flag is hoisted (dark theme), since
+           --surface turns dark navy in this theme and would otherwise
+           make this text hard to read. */
+        body.hoisted-theme .leadership-card h3,
+        body.hoisted-theme #team .section-title {
+            color: #FFFFFF;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
